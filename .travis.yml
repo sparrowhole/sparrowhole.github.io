@@ -5,7 +5,7 @@ node_js:
 cache: npm
 branches:
   only:
-    - master # build master branch only
+    - source # build master branch only
 
 before_install:
   - export TZ='Asia/Shanghai'
@@ -16,11 +16,12 @@ install:
 
 script:
   - hexo g # generate static files
-deploy:
-  provider: pages
-  skip-cleanup: true
-  github-token: $GH_TOKEN
-  keep-history: true
-  on:
-    branch: master
-  local-dir: public
+
+after_script:
+  - cd ./public
+  - git init
+  - git config user.name "sparrowhole"
+  - git config user.email "${EMAIL}"
+  - git add .
+  - git commit -m "Travis CI Auto Builder at $(date +'%Y-%m-%d %H:%M:%S')"
+  - git push --force --quiet "https://${GH_TOKEN}@${REPO}" master:master
