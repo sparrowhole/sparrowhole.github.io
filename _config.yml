@@ -103,6 +103,20 @@ archive_generator:
     daily: false
 ## Theme config END
 
+# markdown, \n\n to make a new paragraph
+marked: 
+  breaks: false
+
+toc:
+  maxdepth: 3
+  class: toc
+  slugify: transliteration
+  decodeEntities: false
+  anchor:
+    position: after
+    symbol: '#'
+    style: header-anchor
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
