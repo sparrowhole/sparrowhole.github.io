@@ -1,14 +1,23 @@
 sudo: false
+
 language: node_js
+
 node_js:
   - lts/*
+
 cache: npm
+
 branches:
   only:
     - source # build master branch only
 
 before_install:
   - export TZ='Asia/Shanghai'
+  - sudo apt-get -y install libsass-dev
+
+addons:
+  apt:
+    update: true
 
 install:
   - npm install hexo-cli -g
