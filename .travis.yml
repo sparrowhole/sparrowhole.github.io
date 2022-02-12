@@ -9,7 +9,7 @@ cache: npm
 
 branches:
   only:
-    - source # build master branch only
+    - source # build source branch only
 
 before_install:
   - export TZ='Asia/Shanghai'
